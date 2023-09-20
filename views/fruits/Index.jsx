@@ -23,6 +23,9 @@ const React = require('react');
                               );
                           })}
                       </ul>
+                      <nav>
+    <a href="/fruits/new">Create a New Fruit</a>
+</nav>
                   </div>
           );
       }
