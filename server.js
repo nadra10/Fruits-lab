@@ -1,3 +1,6 @@
+
+
+
 // Add dotenv
 require('dotenv').config()
 // Load express...
@@ -15,6 +18,11 @@ mongoose.connect(process.env.MONGO_URI, {
   })
 
 
+
+
+
+  
+
 // data
 const fruits = require('./models/fruits')
 const vegetables = require('./models/vegetables')
@@ -29,6 +37,7 @@ app.engine('jsx', jsxEngine())
 
 //near the top, around other app.use() calls
 app.use(express.urlencoded({extended:false}))
+app.use(express.static('public'));
 
 app.use(methodOverride('_method'))
 
@@ -163,7 +172,7 @@ app.put("/vegetables/:id",  async (req, res) => {
 })
 
 
-//Create - Add a new fruit to your fruits
+// Create - Add a new fruit to your fruits
 app.post("/fruits",  async (req, res) => {
   try {
     if (req.body.readyToEat === "on") {
@@ -184,6 +193,7 @@ app.post("/fruits",  async (req, res) => {
 })
 
 app.post("/vegetables",  async (req, res) => {
+  console.log("test")
   try {
     if (req.body.readyToEat === "on") {
       //if checked, req.body.readyToEat is set to 'on'
